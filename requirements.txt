@@ -1,0 +1,8 @@
+# DO NOT include azure-functions-worker in this file
+# The Python Worker is managed by Azure Functions platform
+# Manually managing azure-functions-worker may cause unexpected issues
+
+uvicorn==0.34.2
+mcp==1.9.2
+fastapi==0.115.12
+pytz>=2022.1,<2023.0
