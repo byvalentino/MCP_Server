@@ -1,0 +1,16 @@
+[project]
+name = "fastapi_app"
+version = "1.0.0"
+description = "MCP server"
+dependencies = [
+    "azure-monitor-opentelemetry",
+    "fastapi",
+    "uvicorn[standard]",
+    "uvicorn-worker",
+    "python-multipart",
+    "psycopg2",
+]
+
+[build-system]
+requires = ["flit_core<4"]
+build-backend = "flit_core.buildapi"
