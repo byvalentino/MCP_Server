@@ -5,3 +5,5 @@
 mcp==1.9.2
 fastapi==0.115.12
 pytz>=2022.1,<2023.0
+uvicorn-worker==0.3.0
+requests==2.32.3
