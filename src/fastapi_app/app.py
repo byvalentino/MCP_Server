@@ -102,6 +102,3 @@ app.mount("/", sse_app)
 def read_root():
     return {"message": "MCP SSE Server is running"}
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="localhost", port=8100)
