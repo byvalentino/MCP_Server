@@ -14,6 +14,9 @@ from mcp.server.sse import SseServerTransport
 from dotenv import load_dotenv
 
 load_dotenv()
+base_url = os.getenv("BASE_URL", "http://localhost:8000")
+
+
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -43,7 +46,7 @@ def Electricity_Tax_tool():
     This data is also called 'Elafgift' in Danish.
     """
 
-    url = "https://backend-hxfwd5g5haesg4a3.swedencentral-01.azurewebsites.net/tax"
+    url = f"{base_url}/tax"
     try:
         response = requests.get(url)
         response.raise_for_status()
@@ -60,7 +63,7 @@ def Electricity_spot_price_tool(priece_area="DK1", date=None):
     This data is also called 'Elspotpris' in Danish.
     """
 
-    url = f"https://backend-hxfwd5g5haesg4a3.swedencentral-01.azurewebsites.net/spotprice/date/area?pricearea={priece_area}&qdate={date}"
+    url = f"{base_url}/spotprice/date/area?pricearea={priece_area}&qdate={date}"
     try:
         response = requests.get(url)
         response.raise_for_status()
