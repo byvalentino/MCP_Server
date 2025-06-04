@@ -18,7 +18,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Log in to Docker Hub
-      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login ${{ secrets.DOCKER_REGISTRY }} -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
 
     - name: Generate timestamp
       run: echo "TIMESTAMP=$(date +%s)" >> $GITHUB_ENV
