@@ -13,6 +13,8 @@ from mcp.server.sse import SseServerTransport
 
 from dotenv import load_dotenv
 
+from src.fastapi_app.routes.copilot import copilot_router
+
 load_dotenv()
 base_url = os.getenv("BASE_URL", "http://localhost:8000")
 
@@ -97,8 +99,14 @@ sse_app = Starlette(
     ]
 )
 
+def create_application():
+    application = FastAPI()
+    application.include_router(copilot_router)
 
-app = FastAPI()
+    return application
+
+#app = FastAPI()
+app = create_application()
 app.mount("/", sse_app)
 
 @app.get("/health")
