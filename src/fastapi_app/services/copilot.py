@@ -49,11 +49,9 @@ def get_kernel() -> tuple[Kernel, AzureChatCompletion]:
     kernel = Kernel()
     service_id = "AZURE_OPENAI"
     deployment_name = "gpt-4o-mini"
-    endpoint = ""
-    api_key = ""
-    #api_key=""
-    #endpoint=""
-    #deployment_name="gpt-4.1-nano"
+    api_key=""
+    endpoint=""
+    
     chat_service = AzureChatCompletion(
         deployment_name=deployment_name,
         endpoint=endpoint,
@@ -109,7 +107,7 @@ async def get_chat_response(request: ChatRequest):
         name="prices",
         description="get danish electricity tax prices and spotprices",
         url=mcp_url,
-        #headers = {"Ocp-Apim-Subscription-Key" : "2e85a9d2b646428aa2b0e7e0c069a2ec"} 
+        #headers = {}
     ) as price_plugin:
         kernel.add_plugin(price_plugin)
         result = await chat_service.get_chat_message_content(history, settings, kernel=kernel)
@@ -119,45 +117,3 @@ async def get_chat_response(request: ChatRequest):
             content=result.items[0].text,
         )
         return response
-    # import os
-    # from openai import AzureOpenAI
-
-    # endpoint = "https://aiagentpochub8840144655.openai.azure.com/"
-    # model_name = "gpt-4o-mini"
-    # deployment = "gpt-4o-mini"
-
-    # subscription_key = "B2LSRRHOfCCX0m6IR8Zv3yNgaDtAXsGGtly16hIdwIHOwQ7vUJLNJQQJ99BCACfhMk5XJ3w3AAAAACOG8Y8V"
-    # api_version = "2024-12-01-preview"
-
-    # client = AzureOpenAI(
-    #     api_version=api_version,
-    #     azure_endpoint=endpoint,
-    #     api_key=subscription_key,
-    # )
-
-    # response = client.chat.completions.create(
-    #     messages=[
-    #         {
-    #             "role": "system",
-    #             "content": "helptul assisten"
-    #         },
-    #         {
-    #             "role": "user",
-    #             "content": request.message
-    #         }
-    #     ],
-    #     max_tokens=4096,
-    #     temperature=1.0,
-    #     top_p=1.0,
-    #     model=deployment
-    # )
-
-
-    # _response = ChatResponse(
-    #         content=response.choices[0].message.content,
-    #     )
-    # return _response
-#AZURE_OPENAI_KEY="5oqSq5mxU6bFN3OBpSHnMgydNvM98dKNXNbtFzCBInBT3YHINKIJJQQJ99BAACfhMk5XJ3w3AAABACOGnxyE"
-#AZURE_OPENAI_ENDPOINT="https://aoai-swe-seras.openai.azure.com/"
-#AZURE_OPENAI_DEPLOYMENT="gpt-4.1-nano"
- 
