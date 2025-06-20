@@ -1,4 +1,3 @@
-#Need to commit this file to the repository
 from fastapi import APIRouter, status
 
 #from src.fastapi_app.responses.copilot import ChatResponse
