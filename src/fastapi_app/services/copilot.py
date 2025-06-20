@@ -50,8 +50,8 @@ def get_kernel() -> tuple[Kernel, AzureChatCompletion]:
     kernel = Kernel()
     service_id = "AZURE_OPENAI"
     deployment_name = "gpt-4o-mini"
-    #api_key=""
-    #endpoint=""
+    api_key=AZURE_OPENAI_KEY
+    endpoint=AZURE_OPENAI_ENDPOINT
     
     chat_service = AzureChatCompletion(
         deployment_name=deployment_name,
